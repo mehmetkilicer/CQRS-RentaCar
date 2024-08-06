@@ -1,0 +1,73 @@
+﻿@using CQRS_RentaCar.DAL
+@model CQRS_RentaCar.Model.SearchVehicleModel
+
+
+
+
+
+<form class="trip-form" method="post" asp-action="SearchCar" asp-controller="HomePage">
+    <div class="container">
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <div class="form-control-wrap">
+                    <select id="" class="custom-select form-control" asp-for="BodyStyle">
+                        <option value="">Araç Tipi</option>
+                        @if (ViewBag.BodyStyles != null)
+                        {
+                            @foreach (var item in (List<BodyStyle>)ViewBag.BodyStyles)
+                            {
+                                <option value="@item.BodyStyleId">@item.StyleName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 col-md-4">
+                <div class="form-control-wrap">
+                    <input type="text" id="cf-2" placeholder="Alış Tarihi" class="form-control datepicker px-3" asp-for="StartDate">
+                    <span class="icon icon-date_range"></span>
+                </div>
+            </div>
+            <div class="mb-3 col-md-4">
+                <div class="form-control-wrap">
+                    <input type="text" id="cf-3" placeholder="Teslim Tarihi" class="form-control datepicker px-3" asp-for="EndDate">
+                    <span class="icon icon-date_range"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="mb-3 col-md-4">
+                <div class="form-control-wrap">
+                    <select id="" class="custom-select form-control" asp-for="StartLocation">
+                        <option value="">Alış Lokasyonu</option>
+                        @if (ViewBag.RentalLocations != null)
+                        {
+                            @foreach (var item in (List<RentalLocation>)ViewBag.RentalLocations)
+                            {
+                                <option value="@item.RentalLocationId">@item.LocationName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 col-md-4">
+                <div class="form-control-wrap">
+                    <select id="" class="custom-select form-control" asp-for="EndLocation">
+                        <option value="">Teslim Lokasyonu</option>
+                        @if (ViewBag.RentalLocations != null)
+                        {
+                            @foreach (var item in (List<RentalLocation>)ViewBag.RentalLocations)
+                            {
+                                <option value="@item.RentalLocationId">@item.LocationName</option>
+                            }
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="mb-3 col-md-4">
+                <button class="btn btn-primary btn-block py-3">Araç Bul</button>
+            </div>
+        </div>
+    </div>
+</form>
+
